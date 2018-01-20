@@ -1,1 +1,105 @@
-<p>This is the partial for view 1.</p>
+
+<div>
+   <div class="content-header row">
+      <div class="content-header col-xs-12" style="text-align: center;">
+         
+          <h3>MESSAGES</h3>
+      </div>
+   </div>
+   <div class="row ">
+      <div class="bhoechie-tab-container">
+         <div class="col-lg-2 bhoechie-tab-menu">
+            <div class="list-group">
+               <a class="list-group-element text-center" ng-class="$index == sectionCount?'actives': ''" ng-repeat="data in names" id="myBtn" style="cursor: pointer;"  >
+               	<div ng-if="data.id!=12">
+                  <div ng-click="sectionNumber(data.id)" >
+                     
+                                 <span class="avatar avatar-online"><img class="rounded-circle" style="width:50px; height: 50px;" src="{{data.img}}" alt="image">
+                                 <span class="text-bold-600 mb-0">
+               <span href="#">{{data.user}}</span><br></span>
+           </span>
+                              
+                              
+                                 </div>
+           </div>
+       </a>
+              
+               </div>
+              
+           
+         </div>
+         <div class="col-lg-9 pl-0 pr-0 bhoechie-tab" ng-repeat="data in names" >
+            <div class="bhoechie-tab-content active" ng-if="data.id==sectionId" >
+               <div class="card">
+                  <div class="card-body">
+                     <div class="card-block " >
+                        <div class="row mb-1" id="myChats">
+                           <div ng-repeat="msgs in data.messages"  >
+                              <div ng-if="msgs.createdBy=='12'"  >
+                                 <div class="col-xs-5 offset-xs-6" >
+                                    <div class="media">
+                                       <div style="float: right;">
+                                          <span class="avatar avatar-online"><img class="media-object rounded-circle" style="width:50px; height: 50px;" src="https://randomuser.me/api/portraits/women/16.jpg"  alt="image"></span>
+                                       </div>
+                                       <div class="media-body bg-white p-1">
+                                          <!-- <p class="text-bold-600 mb-0"><a href="#">{{data.user}}</a></p> -->
+                                          <p>{{msgs.text}}
+                                          </p>
+                                       </div>
+                                       <span class="small text-muted">{{msgs.created | date:"medium"}}</span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div ng-if="data.id==msgs.createdBy">
+                                 <div class="col-xs-10"  >
+                                    <div class="media">
+                                       <div class="media-left">
+                                          <span class="avatar avatar-online"><img class="media-object rounded-circle" style="width:50px; height: 50px;" src="{{data.img}}" src="https://randomuser.me/api/portraits/women/16.jpg" alt="image"></span>
+                                       </div>
+                                       
+                                          <div class="media-body bg-faded p-1">
+                                             <!-- <p class="text-bold-600 mb-0"><a href="#">{{data.user}}</a></p> -->
+                                             <p>{{msgs.text}}
+                                             </p>
+                                          </div>
+                                          <span class="small text-muted">{{msgs.created | date:'dd/MM/yyyy hh:mm:ss a'}}</span>
+                                      
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+ 
+
+
+    <footer class="footer bg-grey bg-lighten-4 p-1 navbar-fixed-bottom">
+        
+           
+           
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-group mb-1">
+
+                        <input type="text" placeholder="Enter message" class="form-control" ng-model="chatmsg">
+                        <span class="input-group-btn" id="button-addon2">
+                                           <!--  <button data-toggle="popover" data-content="Add Attachment" id="single-file" data-trigger="hover" data-placement="left" onclick="chooseFile();" class="ml-1 btn btn-primary-border" type="button"> <i class="icon-attachment"></i></button><span id="error" class="help-block with-errors"></span> -->
+                                            <a ng-click="buttonSend()" class="ml-1 btn btn-primary">Enter</a>                
+                                                    </span>
+
+                    </div>
+                </div>
+            </div>
+            <div style="height:0px;overflow:hidden">
+                <input type="file" id="fileInput" name="fileInput" />
+            </div>
+
+       
+    </footer>
+      </div>
+</div>
